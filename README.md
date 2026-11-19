@@ -2,6 +2,8 @@
 
 **A native desktop SQL workspace for SQLite, MySQL and PostgreSQL — written in Rust with [`egui`](https://github.com/emilk/egui) / [`eframe`](https://github.com/emilk/egui/tree/master/crates/eframe).**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Dataloom is a table-based database client for macOS. It keeps the loop that makes tools such as TablePlus pleasant to use — save connections, open a workspace, browse tables and views, run SQL, edit rows in a grid, move data in and out — without shipping a browser engine, and in a single native binary.
 
 This is an independent reimplementation built from scratch. It is **not** affiliated with, endorsed by, or derived from the source code of TablePlus. Behaviour and measurements were reconstructed by inspecting the TablePlus 27.2 app bundle; the evidence is recorded in [`app/MECHANICS.md`](app/MECHANICS.md).
@@ -223,4 +225,6 @@ Built with [`egui`/`eframe`](https://github.com/emilk/egui), [`rusqlite`](https:
 
 ## License
 
-No license has been chosen yet. If you would like to reuse the code, please open an issue to discuss it first.
+Dataloom is released under the [MIT License](LICENSE).
+
+Copyright © 2026 Roper.
