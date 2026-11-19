@@ -1,0 +1,31 @@
+[package]
+name = "dataloom"
+version = "0.1.0"
+edition = "2021"
+description = "A native desktop SQL workspace for SQLite, MySQL and PostgreSQL"
+
+[dependencies]
+eframe = "0.30.0"
+rusqlite = { version = "0.31", features = ["bundled"] }
+mysql = { version = "25", default-features = false, features = ["native-tls"] }
+postgres = "0.19"
+postgres-native-tls = "0.5"
+native-tls = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+# Reads Excel (.xlsx/.xls) workbooks for the data import.
+calamine = "0.30"
+image = { version = "0.24", default-features = false, features = ["png"] }
+# Native open/save panels for the SQL export and import pickers.
+rfd = "0.17"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+security-framework = "3"
+# Native macOS menu bar (File / Edit / Query / View / Help).
+muda = "0.15"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Rust build output
+/app/target/
+/app/dist/
+
+# Local Cargo home used while building in a sandbox
+/.cargo-home/
+
+# Development evidence and scratch artifacts (not part of the app)
+/build-activity.log
+/checks/
+/capture/
+/attachments/
+/pinned/
+/reference/
+/inbox/
+/investigation.cany/
+/craft.json
+/feed.json
+/usage.json
+
+# Raw screenshots; the curated copies used by the README live in docs/screenshots/
+/app/shots/
+
+# Reference images kept at the workspace root
+/reference_row_editor*

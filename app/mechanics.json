@@ -1,0 +1,594 @@
+{
+  "version": 1,
+  "values": [
+    {
+      "name": "driver",
+      "group": "connection",
+      "value": "SQLite",
+      "source": "SQLiteForm.nib (File path, Select file...); Info.plist 27.2.0"
+    },
+    {
+      "name": "start connection",
+      "group": "connection",
+      "value": "connections screen in Dataloom; last saved connection, otherwise the first saved connection in the original",
+      "source": "Welcome.strings; ConnectionPicker.nib; Dataloom: DataloomApp::new leaves live = None and does not auto-connect"
+    },
+    {
+      "name": "sidebar search",
+      "group": "browsing",
+      "value": true,
+      "source": "Localizable.strings: Search for connection... / Find Items in left sidebar..."
+    },
+    {
+      "name": "schema tree",
+      "group": "browsing",
+      "value": "tables and views with row counts",
+      "source": "LeftSidebarController.nib; Localizable.strings: Show table data / Show table structure"
+    },
+    {
+      "name": "editor language",
+      "group": "query",
+      "value": "SQL",
+      "source": "QueryController.nib; Localizable.strings: SQL Editor"
+    },
+    {
+      "name": "multiple statements",
+      "group": "query",
+      "value": true,
+      "source": "Localizable.strings: Run All Queries"
+    },
+    {
+      "name": "run shortcut",
+      "group": "controls",
+      "value": "Cmd+Enter",
+      "source": "Base.lproj/Welcome.nib menu item 369: key \\r, modifier mask 1048576 (Command)"
+    },
+    {
+      "name": "previous page shortcut",
+      "group": "controls",
+      "value": "Cmd+Left",
+      "source": "TableDataController.nib: Previous page (Cmd+Left) tooltip"
+    },
+    {
+      "name": "next page shortcut",
+      "group": "controls",
+      "value": "Cmd+Right",
+      "source": "TableDataController.nib: Next page (Cmd+Right) tooltip"
+    },
+    {
+      "name": "close tab shortcut",
+      "group": "controls",
+      "value": "Cmd+W",
+      "source": "Base.lproj/Welcome.nib menu item 261: key w, modifier mask 1048576"
+    },
+    {
+      "name": "new tab shortcut",
+      "group": "controls",
+      "value": "Cmd+T",
+      "source": "Base.lproj/Welcome.nib menu item 400: key t, modifier mask 1048576"
+    },
+    {
+      "name": "run all queries shortcut",
+      "group": "controls",
+      "value": "Cmd+Shift+Enter",
+      "source": "Base.lproj/Welcome.nib menu item 257: key \\r, modifier mask 1179648"
+    },
+    {
+      "name": "query row limit options",
+      "group": "results",
+      "value": "No limit, 100, 500, 1,000, 5,000, 10,000, 50,000, 100,000, 500,000",
+      "source": "QueryController.nib items 367-383: titles 'No limit', '100 rows', ... '500,000 rows'; menu tags are 1-8 (item 368 tag 999 is a separator), so the title text carries the numeric limit; changeQueryRowsLimit: 0x10038d0c8 -> sub_10038cff8 (0x10038cff8) stores the chosen limit at +0x288"
+    },
+    {
+      "name": "default query row limit",
+      "group": "results",
+      "value": 0,
+      "unit": "rows",
+      "source": "No LimitQueryRowsReturned/LimitRowsReturned key is read by the executable; QueryController.nib item 367 'No limit' has no tag, so it is 0"
+    },
+    {
+      "name": "max page limit",
+      "group": "browsing",
+      "value": 10000000,
+      "source": "sub_10071b5e4 (0x10071b5e4) rejects limit >= 0x989681 (10,000,001)"
+    },
+    {
+      "name": "page offset rules",
+      "group": "browsing",
+      "value": "limit > 0 and limit <= 10,000,000; offset >= 0; offset = 0 or offset < total rows",
+      "source": "sub_10071b5e4 (0x10071b5e4): limit <= 0, limit >= 0x989681 (10,000,001), offset < 0, and offset != 0 && offset >= total (+0x620)"
+    },
+    {
+      "name": "paging validation messages",
+      "group": "browsing",
+      "value": "The limitation should be greater than zero; The limitation is too large; The offset should be positive; The offset should be smaller than the total of rows",
+      "source": "sub_10071b5e4 strings 0x10100d2b0, 0x10100d290, 0x10100d270, 0x10100d230"
+    },
+    {
+      "name": "row number gutter",
+      "group": "results",
+      "value": true,
+      "source": "com.tinyapp.TablePlus IsDisableRowNumbersInQueryResults = 0; Localizable.strings: Show line numbers in query results"
+    },
+    {
+      "name": "alternating row colors",
+      "group": "results",
+      "value": true,
+      "source": "com.tinyapp.TablePlus DisableAlternatingRows = 0; Localizable.strings: Alternating row background colors"
+    },
+    {
+      "name": "row status",
+      "group": "results",
+      "value": "Rows (loaded of total loaded) while partial; Only N rows loaded when the page is capped",
+      "source": "sub_10000e300 (0x10000e300) strings 0x100ff44a0/0x100ff4480; sub_100018d60 (0x100018d60) string 0x100ff45f0"
+    },
+    {
+      "name": "quick filter",
+      "group": "browsing",
+      "value": "case-insensitive contains across columns",
+      "source": "Quick Filter field; sub_1006f95a0 operator set"
+    },
+    {
+      "name": "quick filter operators",
+      "group": "browsing",
+      "value": "Contains, Not contains, Has prefix, Has suffix; each with case-insensitive and case-sensitive variants",
+      "source": "sub_1006f95a0 (0x1006f95a0); strings 0x10100cca0-0x10100cd80; pseudo-C uses lowercased(), hasPrefix/hasSuffix, and $options: \"i\""
+    },
+    {
+      "name": "column filters",
+      "group": "browsing",
+      "value": "Dataloom: per-column filters (column + operator + value) combined with ALL (AND) or ANY (OR) on top of the Quick Filter; the original stores the advanced-filter state in the DefaultAvancedFilter* keys",
+      "source": "ViewSetting -> DefaultAvancedFilter, DefaultAvancedFilterOperator, DefaultAvancedFilterColumn, DefaultAvancedFilterColumnSort, DefaultAvancedFilterState; operators mirror sub_1006f95a0 (0x1006f95a0)"
+    },
+    {
+      "name": "jump to column or row",
+      "group": "browsing",
+      "value": "> searches in the column content",
+      "source": "Use \">\" to search in the column content (0x100ffaf50, sub_10031c47c); Jump to Column or Row (0x101008310); Column, row number, or value (0x100ff4500); Search for field (0x100ffaea0)"
+    },
+    {
+      "name": "default table limit",
+      "group": "browsing",
+      "value": 300,
+      "unit": "rows",
+      "source": "sub_10071b144 (0x10071b144), sub_10071b370 (0x10071b370) and sub_10081f074 (0x10081f074): each loads the stored limit and uses csel with 0x12c (300) when the limit is lower, including No limit (0); gotoPage: (0x100817a28) dispatches previous/settings/next"
+    },
+    {
+      "name": "page step",
+      "group": "browsing",
+      "value": "max(limit, 300)",
+      "unit": "rows",
+      "source": "sub_10071b144 (0x10071b144) next page, sub_10071b370 (0x10071b370) previous page, sub_10081f074 (0x10081f074) page settings: csel ..., 0x12c, limit, lt; previous clamps at zero"
+    },
+    {
+      "name": "pagination",
+      "group": "browsing",
+      "value": "Limit/Offset page-settings popover with previous and next page segments",
+      "source": "PagingPopover didEndEditing: (0x100532758) -> sub_100532a80; TableDataController showPagingPopup: (0x100817948) -> sub_100817588; gotoPage: (0x100817a28) -> sub_10071b370 / sub_10081f074 / sub_10071b144; TableDataController.nib page segments"
+    },
+    {
+      "name": "cell editing",
+      "group": "editing",
+      "value": true,
+      "source": "Localizable.strings: Add Row / Commit / Discard / Paste to Selected Cells"
+    },
+    {
+      "name": "inline cell editing",
+      "group": "editing",
+      "value": "Dataloom: double-click a cell to edit in place; Enter or clicking away saves, Escape cancels; views and keyless tables stay read-only",
+      "source": "Dataloom choice: custom-painted grid places a TextEdit in the cell and writes through Db::update_cell; the original edits cells inside TableContentTable (nib) and exposes Add Row / Commit / Discard / Paste to Selected Cells"
+    },
+    {
+      "name": "export sql",
+      "group": "tools",
+      "value": "Dataloom: one table or the whole database as CREATE + one INSERT per row; the original also offers DROP IF EXISTS, structure-only, content-only and gzip options",
+      "source": "ViewSetting -> ExportTableSQLNotIncludeStruct, ExportTableSQLNotIncludeContent, ExportTableSQLDropIfExist, ExportTableSQLCompressGzip, ExportFileNamePatterns, ExportTableCSV*; Dataloom: Db::dump_table_sql / dump_database_sql with values quoted by the engine"
+    },
+    {
+      "name": "import sql",
+      "group": "tools",
+      "value": "Dataloom: runs every statement of a .sql file against the connection",
+      "source": "Original menu strings From SQL Dump... and Import SQL Wizard; Dataloom: Db::import_sql through split_statements"
+    },
+    {
+      "name": "backups",
+      "group": "tools",
+      "value": "Dataloom: on-demand timestamped backup per connection in the app data folder, byte-for-byte file copy for SQLite and SQL dump for server engines; SQLite copies restore in place",
+      "source": "Original: BackupDatabaseChecklist, BackupHistoryWindow, BackupRunner, BackupScheduleFormController, BackupFileNamePatterns, Backup database (Legacy)... menu item, Use Sync database, a new replacement for Backup.; Dataloom: db::create_backup / list_backups / restore_backup"
+    },
+    {
+      "name": "delete row",
+      "group": "editing",
+      "value": "selected rows deleted immediately, with undo",
+      "source": "TableContentTable deleteRow: (0x1005c902c) collects rows through sub_1005c5dc4 (0x1005c5dc4), then sub_1005c6fc8 (0x1005c6fc8) deletes them, calls NSUndoManager.registerUndo, writes a deleted-rows status and refreshes; no confirmation sheet"
+    },
+    {
+      "name": "structure view",
+      "group": "structure",
+      "value": true,
+      "source": "TableStructureController.nib; Localizable.strings: Structure / Columns (%@)"
+    },
+    {
+      "name": "multiple tabs",
+      "group": "tabs",
+      "value": true,
+      "source": "TBTabViewController.nib; Localizable.strings: New Tab / Close Tab"
+    },
+    {
+      "name": "query history",
+      "group": "query",
+      "value": "written to disk; one global file in Dataloom, per connection in the original",
+      "source": "sub_1006c947c (0x1006c947c) creates the serial queue com.tableplus.history-save (0x10100c870); 0x101028270 is the Swift reflection string saveHistory(_:connectionModel:), not a function; Query History for %@ (0x101018450)"
+    },
+    {
+      "name": "history retention",
+      "group": "query",
+      "value": "keep all (HistoryKeepYears = 0)",
+      "source": "ViewSetting -> HistoryKeepYears = 0; sub_1005a7988 (0x1005a7988) reads the key"
+    },
+    {
+      "name": "query timeout",
+      "group": "query",
+      "value": 0,
+      "source": "ViewSetting -> QueryTimeOut = 0; MCP tool schema separately clamps time_out to 1..300 s (default 300)"
+    },
+    {
+      "name": "themes",
+      "group": "appearance",
+      "value": "dark and light",
+      "source": "SettingThemeController.nib; Localizable.strings: Light / Tab hover background"
+    },
+    {
+      "name": "theme default",
+      "group": "appearance",
+      "value": "light in Dataloom; system (builtin:auto) in the original",
+      "source": "ViewSetting -> ThemeID = builtin:auto; Dataloom: theme::DEFAULT_DARK = false, launches with cc.egui_ctx.set_theme(ThemePreference::Light) and the toolbar toggle switches to dark"
+    },
+    {
+      "name": "window width",
+      "group": "appearance",
+      "value": 1400,
+      "unit": "pt",
+      "estimated": true
+    },
+    {
+      "name": "window height",
+      "group": "appearance",
+      "value": 880,
+      "unit": "pt",
+      "estimated": true
+    },
+    {
+      "name": "minimum window width",
+      "group": "appearance",
+      "value": 980,
+      "unit": "pt",
+      "estimated": true
+    },
+    {
+      "name": "minimum window height",
+      "group": "appearance",
+      "value": 620,
+      "unit": "pt",
+      "estimated": true
+    },
+    {
+      "name": "sidebar width",
+      "group": "appearance",
+      "value": 297,
+      "unit": "pt",
+      "source": "NSSplitView Subview Frames WorkspaceSplitView saved 296.5; rounded to 297"
+    },
+    {
+      "name": "grid row height",
+      "group": "appearance",
+      "value": 22,
+      "unit": "pt",
+      "source": "TableDataController.nib object 106 (NSClassSwapper): NSRowHeight = 22.0, NSIntercellSpacingHeight = 0.0"
+    },
+    {
+      "name": "data font size",
+      "group": "appearance",
+      "value": 11,
+      "unit": "pt",
+      "source": "ViewSetting -> DataFontSize = 11"
+    },
+    {
+      "name": "sidebar font size",
+      "group": "appearance",
+      "value": 13,
+      "unit": "pt",
+      "source": "ViewSetting -> LeftSidebarFontSize = 13; sub_1005a7988 (0x1005a7988) reads the key"
+    },
+    {
+      "name": "sql font size",
+      "group": "appearance",
+      "value": 11,
+      "unit": "pt",
+      "source": "ViewSetting -> SQLFontSize = 11"
+    },
+    {
+      "name": "line height",
+      "group": "appearance",
+      "value": 1.2,
+      "source": "ViewSetting -> LineHeight = 1.2 (stored as 1.200000047683716)"
+    },
+    {
+      "name": "tab width",
+      "group": "appearance",
+      "value": 4,
+      "unit": "spaces",
+      "source": "ViewSetting -> TabWidthSpaces = 4"
+    },
+    {
+      "name": "alternating rows default",
+      "group": "appearance",
+      "value": true,
+      "source": "ViewSetting -> DisableAlternatingRows = 0; sub_1005a7988 (0x1005a7988) reads the key"
+    },
+    {
+      "name": "row numbers default",
+      "group": "appearance",
+      "value": true,
+      "source": "ViewSetting -> IsDisableRowNumbersInQueryResults = 0; sub_1005a7988 (0x1005a7988) reads the key"
+    },
+    {
+      "name": "accent color",
+      "group": "appearance",
+      "value": "#4F8CFF",
+      "estimated": true
+    },
+    {
+      "name": "settings container",
+      "group": "appearance",
+      "value": "ViewSetting",
+      "source": "sub_1008168c0 (0x1008168c0) builds the settings dictionary via sub_1005ab940 (0x1005ab940) and stores it under the ViewSetting key"
+    },
+    {
+      "name": "tab width choices",
+      "group": "appearance",
+      "value": "2, 4, 6, 8",
+      "source": "sub_1008168c0 (0x1008168c0): choice 0 -> 2, 1 -> 4, 2 -> 6, 3 -> 8 spaces"
+    },
+    {
+      "name": "editor line height",
+      "group": "appearance",
+      "value": 13.2,
+      "source": "SQLFontSize 11 x LineHeight 1.2 from ViewSetting"
+    },
+    {
+      "name": "query row limit menu tags",
+      "group": "results",
+      "value": "1=100, 2=500, 3=1,000, 4=5,000, 5=10,000, 6=50,000, 7=100,000, 8=500,000",
+      "source": "QueryController.nib items 369-383; the tag is the menu index, the title is the value"
+    },
+    {
+      "name": "paging field parse",
+      "group": "browsing",
+      "value": "non-numeric limit or offset text becomes 0",
+      "source": "sub_100532a80 (0x100532a80): signed base-10 parse, invalid text falls through to 0"
+    },
+    {
+      "name": "row status format",
+      "group": "results",
+      "value": "Rows (loaded of total loaded) while the total is known; Rows (N so far) otherwise",
+      "source": "sub_10000e300 (0x10000e300): strings 0x100ff44a0 and 0x100ff4480"
+    },
+    {
+      "name": "paging limit field",
+      "group": "browsing",
+      "value": "max(limit, 300)",
+      "source": "sub_10081f074 (0x10081f074) shows max(limit, 300) in the Limit field; csel ..., 0x12c, limit, lt"
+    },
+    {
+      "name": "paging text parse",
+      "group": "browsing",
+      "value": "optional sign followed only by decimal digits; any other text becomes 0",
+      "source": "sub_100532a80 (0x100532a80): manual +/- and digit parse, invalid text falls through to 0; no whitespace trimming"
+    },
+    {
+      "name": "quick filter default operator",
+      "group": "browsing",
+      "value": "Contains - Case insensitive; both sides are lowercased before matching",
+      "source": "sub_1006f95a0 (0x1006f95a0): lowercased() for the case-insensitive operators; \"Contains - Case insensitive\" is the first operator string"
+    },
+    {
+      "name": "empty result message",
+      "group": "results",
+      "value": "No matching columns or rows",
+      "source": "sub_10000e300 (0x10000e300): string 0x100ff4460"
+    },
+    {
+      "name": "unknown total status",
+      "group": "results",
+      "value": "Rows (N so far)",
+      "source": "sub_10000e300 (0x10000e300): string 0x100ff4480, used when the total is unknown"
+    },
+    {
+      "name": "truncated status",
+      "group": "results",
+      "value": "Only N rows loaded",
+      "source": "sub_100018d60 (0x100018d60): string 0x100ff45f0"
+    },
+    {
+      "name": "row detail cell width",
+      "group": "browsing",
+      "value": 300,
+      "source": "RightSidebarController.nib prototypes: RowDetailTextCell 300x37, RowDetailDropdownCell 300x44, RowDetailByteaCell 300x230"
+    },
+    {
+      "name": "row detail minimum width",
+      "group": "browsing",
+      "value": 240,
+      "source": "RightSidebarController.nib: split-view row detail width constraint 240 at priority 750"
+    },
+    {
+      "name": "row detail search placeholder",
+      "group": "browsing",
+      "value": "Search for field",
+      "source": "RightSidebarController.nib rowSearchField; Localizable.strings Search for field"
+    },
+    {
+      "name": "row detail empty state",
+      "group": "browsing",
+      "value": "No row selected",
+      "source": "RightSidebarController.nib rowLabel / row detail table empty state"
+    },
+    {
+      "name": "row detail toggle",
+      "group": "controls",
+      "value": "Space",
+      "source": "WorkspaceWindow.nib Panels toolbar segmented control tooltip Toggle Row Detail (Space), action toggleSplitView:"
+    },
+    {
+      "name": "row detail null label",
+      "group": "browsing",
+      "value": "NULL",
+      "source": "RightSidebarController.nib RowDetailByteaCell placeholder and popup NULL item"
+    },
+    {
+      "name": "row detail panel side",
+      "group": "browsing",
+      "value": "right",
+      "source": "WorkspaceWindow.nib rightSidebarTemplate + toggleSplitView:; rows are edited in the workspace right sidebar"
+    },
+    {
+      "name": "row detail fuzzy strategy",
+      "group": "browsing",
+      "value": "Fuzzy - default",
+      "source": "RightSidebarController.nib Matching strategy menu, checked item, action updateSearchStrategy: tag 0"
+    },
+    {
+      "name": "row detail contains strategy",
+      "group": "browsing",
+      "value": "Contains",
+      "source": "RightSidebarController.nib Matching strategy menu, action updateSearchStrategy: tag 1"
+    },
+    {
+      "name": "row detail integer type label",
+      "group": "browsing",
+      "value": "long",
+      "source": "MySQL97.framework native type LONG displayed in RowDetailTextCell.fieldType; reference screenshot"
+    },
+    {
+      "name": "row detail string type label",
+      "group": "browsing",
+      "value": "var_string",
+      "source": "MySQL97.framework native type VAR_STRING displayed in RowDetailTextCell.fieldType; reference screenshot"
+    },
+    {
+      "name": "row detail blob type label",
+      "group": "browsing",
+      "value": "blob",
+      "source": "MySQL97.framework native type BLOB displayed in RowDetailByteaCell.fieldType; reference screenshot"
+    },
+    {
+      "name": "row detail toggle label",
+      "group": "controls",
+      "value": "Row detail",
+      "source": "WorkspaceWindow.nib Panels toolbar split-pane control; Dataloom keeps the control labelled Row detail while the panel is closed"
+    },
+    {
+      "name": "table menu export",
+      "group": "browsing",
+      "value": "Export",
+      "source": "LeftSidebarController.nib table menu Export; Localizable.strings Export table '%@' / Export data as EXCEL / Export CSV"
+    },
+    {
+      "name": "table menu import",
+      "group": "browsing",
+      "value": "Import",
+      "source": "LeftSidebarController.nib table menu Import / Import...; actions importSQL:, importSQLFile:"
+    },
+    {
+      "name": "table menu clone",
+      "group": "browsing",
+      "value": "Clone",
+      "source": "LeftSidebarController.nib table menu Clone...; action cloneTable:"
+    },
+    {
+      "name": "table menu truncate",
+      "group": "browsing",
+      "value": "Truncate",
+      "source": "LeftSidebarController.nib table menu Truncate / Truncate...; actions truncateTable:, copyTruncate:"
+    },
+    {
+      "name": "table menu delete",
+      "group": "browsing",
+      "value": "Delete",
+      "source": "LeftSidebarController.nib table menu Delete / Delete...; Localizable.strings Delete “%@”?"
+    },
+    {
+      "name": "table export excel",
+      "group": "browsing",
+      "value": "Excel",
+      "source": "Localizable.strings Export data as EXCEL; Dataloom writes .xlsx"
+    },
+    {
+      "name": "table export csv",
+      "group": "browsing",
+      "value": "CSV",
+      "source": "Localizable.strings Export CSV"
+    },
+    {
+      "name": "table export sql",
+      "group": "browsing",
+      "value": "SQL",
+      "source": "LeftSidebarController.nib exportTable: / exportTableWithColumnSelection:; Localizable.strings Export table '%@'"
+    },
+    {
+      "name": "table context menu entries",
+      "group": "browsing",
+      "value": "Export, Import, Clone, Truncate, Delete",
+      "source": "Dataloom subset of LeftSidebarController.nib table menu; the original also has open structure/diagram/copy name/pin/new/copy script"
+    },
+    {
+      "name": "connection menu edit",
+      "group": "connections",
+      "value": "Edit",
+      "source": "ConnectionWindow.nib menu item Edit...; action editConnection:"
+    },
+    {
+      "name": "connection menu duplicate",
+      "group": "connections",
+      "value": "Duplicate",
+      "source": "ConnectionWindow.nib menu item Duplicate; action cloneConnection:"
+    },
+    {
+      "name": "connection menu delete",
+      "group": "connections",
+      "value": "Delete",
+      "source": "ConnectionWindow.nib menu item Delete; action deleteConnection:"
+    },
+    {
+      "name": "connection menu export",
+      "group": "connections",
+      "value": "Export",
+      "source": "ConnectionWindow.nib menu item Export Connections; action exportConnection:"
+    },
+    {
+      "name": "connection import",
+      "group": "connections",
+      "value": "Import connections",
+      "source": "CreateConnectionWindow.nib Import Connection; action importConnectionFrom:"
+    },
+    {
+      "name": "connection group new",
+      "group": "connections",
+      "value": "New group",
+      "source": "CreateConnectionWindow.nib New Group; LeftSidebarController.nib New Group..."
+    },
+    {
+      "name": "connection group rename",
+      "group": "connections",
+      "value": "Rename group",
+      "source": "LeftSidebarController.nib Edit group... / Edit/Rename..."
+    },
+    {
+      "name": "connection group delete",
+      "group": "connections",
+      "value": "Delete group",
+      "source": "LeftSidebarController.nib Delete group"
+    }
+  ]
+}
